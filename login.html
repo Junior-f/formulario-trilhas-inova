@@ -1,0 +1,43 @@
+<!-- login.html -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h2>Login</h2>
+      <form id="login-form">
+        <div class="form-control">
+          <label for="login-id">ID do usuário</label>
+          <input
+            type="text"
+            id="login-id"
+            class="input"
+            placeholder="Digite seu ID"
+            required
+          />
+        </div>
+
+        <div class="form-control">
+          <label for="login-senha">Senha</label>
+          <input
+            type="password"
+            id="login-senha"
+            class="input"
+            placeholder="Digite sua senha"
+            required
+          />
+        </div>
+
+        <div class="botoes">
+          <button type="submit" class="inscricao">Entrar</button>
+        </div>
+      </form>
+    </div>
+    <script src="login.js"></script>
+  </body>
+</html>
