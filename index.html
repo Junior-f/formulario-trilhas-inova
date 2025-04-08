@@ -10,6 +10,7 @@
     <div class="conteudo">
       <div class="imagem-lateral">
         <img src="assets/Ilustration.svg" alt="Banner Inscrição" />
+        <button id="toggle-dark-mode" class="dark-mode-toggle">🌙 Modo Escuro</button>
       </div>
     <div class="container">
       <a href="#" class="voltar">&larr; Voltar</a>
@@ -20,52 +21,39 @@
 
       <h3>Informações do participante</h3>
       <form>
-        <label for="nome">Nome completo</label>
-        <input
-          class="input"
-          type="text"
-          id="nome"
-          placeholder="Digite seu nome"
-          required
-        />
-
-        <label for="data-nascimento">Data de nascimento</label>
-        <input class="input" type="date" id="data-nascimento" required />
-
-        <label for="cpf">CPF</label>
-        <input
-          class="input"
-          type="text"
-          id="cpf"
-          placeholder="123.456.789-00"
-          required
-        />
-
-        <label for="sexo">Sexo</label>
-        <select class="input" id="sexo" required>
-          <option value="">Selecione</option>
-          <option value="feminino">Feminino</option>
-          <option value="masculino">Masculino</option>
-        </select>
-
-        <label for="email">E-mail</label>
-        <input
-          type="email"
-          id="email"
-          placeholder="Digite seu e-mail"
-          required
-          class="input"
-        />
-        <p class="erro">⚠ Insira um e-mail válido</p>
-
-        <label for="telefone">Telefone</label>
-        <input
-          type="tel"
-          id="telefone"
-          placeholder="(99) 99999-9999"
-          required
-          class="input"
-        />
+        <div class="form-control">
+          <label for="nome">Nome completo</label>
+          <input class="input" type="text" id="nome" placeholder="Digite seu nome" required />
+        </div>
+        
+        <div class="form-control">
+          <label for="data-nascimento">Data de nascimento</label>
+          <input class="input" type="date" id="data-nascimento" name="data-nascimento" required />
+        </div>
+        
+        <div class="form-control">
+          <label for="cpf">CPF</label>
+          <input class="input" type="text" id="cpf" placeholder="123.456.789-00" required />
+        </div>
+        
+        <div class="form-control">
+          <label for="sexo">Sexo</label>
+          <select class="input" id="sexo" required>
+            <option value="">Selecione</option>
+            <option value="feminino">Feminino</option>
+            <option value="masculino">Masculino</option>
+          </select>
+        </div>
+        
+        <div class="form-control">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" placeholder="Digite seu e-mail" required class="input" />
+        </div>
+        
+        <div class="form-control">
+          <label for="telefone">Telefone</label>
+          <input type="tel" id="telefone" placeholder="(99) 99999-9999" required class="input" />
+        </div>
 
         <label for="comprovante" class="upload-label">
           <span class="label-text">Documento de identidade</span>
@@ -85,14 +73,10 @@
 
         <h3>Endereço residencial</h3>
 
-        <label for="cep">CEP</label>
-        <input
-          type="text"
-          id="cep"
-          placeholder="01234-567"
-          required
-          class="input"
-        />
+        <div class="form-control">
+          <label for="cep">CEP</label>
+          <input type="text" id="cep" placeholder="01234-567" required class="input" />
+        </div>
 
         <div class="endereco-grid">
           <div>
@@ -160,7 +144,7 @@
         <p>Selecione apenas uma trilha</p>
         <div class="trilhas">
           <div class="card">
-            <input type="checkbox" class="input-checkbox" />
+            <input type="checkbox" name="trilha" class="input-checkbox" />
             <img
               src="assets/programacao.svg"
               alt="Logo de Programação"
@@ -169,7 +153,7 @@
             <span class="linguagem">Programação Frontend</span>
           </div>
           <div class="card">
-            <input type="checkbox" class="input-checkbox" />
+            <input type="checkbox" name="trilha" class="input-checkbox" />
             <img
               src="assets/programacao-backend.svg"
               alt="Logo de Programação"
@@ -178,7 +162,7 @@
             <span class="linguagem">Programação Backend</span>
           </div>
           <div class="card">
-            <input type="checkbox" class="input-checkbox" />
+            <input type="checkbox" name="trilha" class="input-checkbox" />
             <img
               src="assets/programacao-jogos.svg"
               alt="Logo de Programação"
@@ -187,7 +171,7 @@
             <span class="linguagem">Programação de Jogos</span>
           </div>
           <div class="card">
-            <input type="checkbox" class="input-checkbox" />
+            <input type="checkbox" name="trilha" class="input-checkbox" />
             <img
               src="assets/design.svg"
               alt="Logo de Programação"
@@ -196,7 +180,7 @@
             <span class="linguagem">Design e Experiência</span>
           </div>
           <div class="card">
-            <input type="checkbox" class="input-checkbox" />
+            <input type="checkbox" name="trilha" class="input-checkbox" />
             <img
               src="assets/ciencia-dados.svg"
               alt="Logo de Programação"
@@ -207,7 +191,7 @@
         </div>
 
         <div class="termos">
-          <input id="eu" type="checkbox" required />
+          <input id="eu" type="checkbox" id="termos" required />
           <span
             >Declaro que li e concordo com os
             <a href="#" class="orange-text">Termos e Condições</a> e com a
@@ -215,11 +199,34 @@
           >
         </div>
 
+        <h3>Crie seu acesso</h3>
+          <div class="form-control">
+            <label for="id-usuario">ID do Usuário</label>
+            <input
+              type="text"
+              id="id-usuario"
+              class="input"
+              placeholder="Digite um ID de usuário (ex: seu e-mail)"
+              required
+            />
+          </div>
+
+          <div class="form-control">
+            <label for="senha">Senha</label>
+            <input
+              type="password"
+              id="senha"
+              class="input"
+              placeholder="Crie uma senha"
+              required
+            />
+          </div>
         <div class="botoes">
           <button type="button" class="cancelar">Cancelar</button>
-          <button type="submit" class="inscricao">Fazer inscrição</button>
+          <button type="submit" class="inscricao" id="btnInscrever">Fazer inscrição</button>
         </div>
       </form>
     </div>
+    <script src="script.js"></script>
   </body>
 </html>
