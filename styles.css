@@ -340,3 +340,7 @@ body.dark .cancelar {
   margin-top: 4px;
 }
 
+.mensagem-erro {
+  margin-top: 10px;
+  font-weight: bold;
+}

@@ -85,8 +85,8 @@ function limparErros() {
     .forEach((campo) => campo.classList.remove("input-erro"));
 }
 
-function validarFormulario() {
-  limparErros();
+function validarFormulario(event) {
+  event.preventDefault();
   let valido = true;
 
   const nome = document.getElementById("nome");
@@ -160,16 +160,20 @@ function validarFormulario() {
     valido = false;
   }
 
-  const selecionadas = Array.from(trilhas).filter((t) => t.checked);
-  if (selecionadas.length !== 1) {
-    const trilhaContainer =
-      trilhas[0].closest("fieldset") || trilhas[0].parentElement;
-    mostrarErro(trilhaContainer, "⚠ Escolha apenas uma trilha");
+  if (termos && !termos.checked) {
+    mostrarErro(termos, "⚠ Você precisa aceitar os termos");
     valido = false;
   }
 
-  if (!termos.checked) {
-    mostrarErro(termos, "⚠ Você precisa aceitar os termos");
+  const selecionadas = Array.from(trilhas).filter((t) => t.checked);
+  const trilhaContainer =
+    trilhas[0].closest("fieldset") || trilhas[0].parentElement;
+
+  if (selecionadas.length === 0) {
+    mostrarErro(trilhaContainer, "⚠ Escolha uma trilha");
+    valido = false;
+  } else if (selecionadas.length > 1) {
+    mostrarErro(trilhaContainer, "⚠ Escolha apenas uma trilha");
     valido = false;
   }
 
@@ -241,12 +245,10 @@ window.addEventListener("DOMContentLoaded", () => {
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-    console.log("Submit acionado!");
-    alert("Formulário enviado!");
-    const form = document.querySelector("form");
-    if (!form) return;
 
-    const valido = validarFormulario();
+    limparErros();
+    const valido = validarFormulario(e);
+
     if (!valido) return;
 
     salvarDados();
@@ -266,10 +268,17 @@ window.addEventListener("DOMContentLoaded", () => {
     const novoUsuario = {
       id: idUsuario,
       senha: senha,
-      nome: document.getElementById("nome").value,
-      email: document.getElementById("email").value,
-      telefone: document.getElementById("telefone").value,
-      cpf: document.getElementById("cpf").value,
+      nome: document.getElementById("nome").value.trim(),
+      dataNascimento: document.getElementById("data-nascimento").value,
+      sexo: document.getElementById("sexo").value,
+      email: document.getElementById("email").value.trim(),
+      telefone: document.getElementById("telefone").value.trim(),
+      cpf: document.getElementById("cpf").value.trim(),
+      cep: document.getElementById("cep").value.trim(),
+      rua: document.getElementById("rua").value.trim(),
+      numero: document.getElementById("numero").value.trim(),
+      cidade: document.getElementById("cidade").value.trim(),
+      estado: document.getElementById("estado").value.trim(),
       trilha: obterTrilhaSelecionada(),
       dataCadastro: new Date().toISOString(),
     };
@@ -278,6 +287,9 @@ window.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("usuarios", JSON.stringify(usuariosExistentes));
 
     alert("✅ Inscrição realizada com sucesso!");
+    localStorage.removeItem("formulario");
+    limparErros();
+
     form.reset();
     window.location.href = "login.html";
   });
