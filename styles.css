@@ -277,3 +277,66 @@ button {
   font-size: 14px;
   color: #a8a29e;
 }
+
+/* Botão de modo escuro */
+.dark-mode-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #f3541c;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+/* Estilos do modo escuro */
+body.dark {
+  background-color: #121212;
+  color: #f1f1f1;
+}
+
+body.dark .container {
+  background-color: #1e1e1e;
+}
+
+body.dark .input,
+body.dark .input_endereco_1,
+body.dark .input_endereco_2 {
+  background-color: #2c2c2c;
+  color: #f1f1f1;
+  border: 1px solid #555;
+}
+
+body.dark .upload-label {
+  color: #f1f1f1;
+}
+
+body.dark .card {
+  background-color: #2a2a2a;
+  border-color: #444;
+}
+
+body.dark .inscricao {
+  background: #f3541c;
+}
+
+body.dark .cancelar {
+  background-color: transparent;
+  border-color: #f3541c;
+  color: #f3541c;
+}
+
+/* mesagens de erro  */
+.input-erro {
+  border: 2px solid red !important;
+}
+
+.erro {
+  color: red;
+  font-size: 0.875rem;
+  margin-top: 4px;
+}
+
